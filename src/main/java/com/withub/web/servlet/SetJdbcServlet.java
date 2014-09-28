@@ -2,7 +2,6 @@ package com.withub.web.servlet;
 
 import com.withub.dao.BaseDao;
 import com.withub.model.system.config.AuthorizationInfo;
-import com.withub.model.system.config.SystemConfigInfo;
 import com.withub.service.ConfigurationService;
 import com.withub.web.common.util.StringUtil;
 import net.sf.json.JSONObject;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,17 +32,20 @@ public class SetJdbcServlet extends HttpServlet {
 
         BaseDao baseDao = new BaseDao();
         JSONObject jsonObject = new JSONObject();
+        Connection connection = null;
         try {
-            baseDao.getConnection(map);
+            connection = baseDao.getConnection(map);
             jsonObject.put("success", true);
             ConfigurationService configurationService = new ConfigurationService();
-            AuthorizationInfo authorizationInfo= configurationService.getAuthorizationInfo(map);
+            AuthorizationInfo authorizationInfo = configurationService.getAuthorizationInfo(map);
             request.getSession().setAttribute("systemAuthorize", StringUtil.isEmpty(authorizationInfo.getSystemAuthorizationCode()) ? "" : "OK");
             jsonObject.put("systemAuthorize", StringUtil.isNotEmpty(String.valueOf(request.getSession().getAttribute("systemAuthorize"))));
             jsonObject.put("authorizationInfo", authorizationInfo);
         } catch (Exception e) {
             jsonObject.put("message1", e.getMessage());
             jsonObject.put("message2", e.toString());
+        } finally {
+            baseDao.closeConnection(connection);
         }
 
         response.setContentType("application/x-json;charset=UTF-8");

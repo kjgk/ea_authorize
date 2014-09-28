@@ -1,9 +1,6 @@
 package com.withub.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Map;
 
 public class BaseDao {
@@ -24,15 +21,45 @@ public class BaseDao {
         return connection;
     }
 
-    public ResultSet executeQuery(Map jdbc,String  sql) throws Exception {
+    public void closeConnection(Connection connection) {
 
-        if (jdbc == null||jdbc.size() ==0){
-               return  null;
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        Connection connection=  getConnection(jdbc);
+    }
+
+    public void closeConnection(Connection connection, Statement statement) {
+
+        if (statement != null) {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public ResultSet executeQuery(Map jdbc, String sql) throws Exception {
+
+        if (jdbc == null || jdbc.size() == 0) {
+            return null;
+        }
+        Connection connection = getConnection(jdbc);
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        return  resultSet;
+        return resultSet;
 
     }
 
