@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+    <display-name>Withub</display-name>
+
+    <servlet>
+        <servlet-name>ScriptLoadServlet</servlet-name>
+        <servlet-class>com.withub.web.servlet.ScriptLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PageLoadServlet</servlet-name>
+        <servlet-class>com.withub.web.servlet.PageLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SetJdbcServlet</servlet-name>
+        <servlet-class>com.withub.web.servlet.SetJdbcServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConfigurationServlet</servlet-name>
+        <servlet-class>com.withub.web.servlet.ConfigurationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WidgetCategoryServlet</servlet-name>
+        <servlet-class>com.withub.web.servlet.WidgetCategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WidgetServlet</servlet-name>
+        <servlet-class>com.withub.web.servlet.WidgetServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ScriptLoadServlet</servlet-name>
+        <url-pattern>/loadScript/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PageLoadServlet</servlet-name>
+        <url-pattern>/loadPage/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SetJdbcServlet</servlet-name>
+        <url-pattern>/setJdbcServlet/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConfigurationServlet</servlet-name>
+        <url-pattern>/system/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WidgetCategoryServlet</servlet-name>
+        <url-pattern>/widgetCategory/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WidgetServlet</servlet-name>
+        <url-pattern>/widget/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.xml</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.gif</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.swf</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
+
+</web-app>
