@@ -4,7 +4,6 @@
     <artifact type="exploded-war" build-on-make="true" name="authorize:Web exploded">
       <output-path>$PROJECT_DIR$/out/artifacts/authorize</output-path>
       <root id="root">
-        <element id="javaee-facet-resources" facet="authorize/web/Web" />
         <element id="directory" name="WEB-INF">
           <element id="directory" name="classes">
             <element id="module-output" name="authorize" />
@@ -24,7 +23,7 @@
             <element id="library" level="project" name="Maven: postgresql:postgresql:9.1-901.jdbc4" />
           </element>
         </element>
-        <element id="javaee-facet-resources" facet="authorize/web/Web2" />
+        <element id="javaee-facet-resources" facet="authorize/web/Web" />
       </root>
     </artifact>
   </component>
